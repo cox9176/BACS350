@@ -9,17 +9,10 @@
 </head>
 
 <body>
-	<header>
-		<div class="row">
-			<div class="col-6">
-				<h1>Superhero Gallery</h1>
-			</div>
-		</div>
-	</header>
-
-	<main>
-		<p><a href="/hero/">List of Heros</a></p>
-		<p><a href="/admin/">Django Admin Views</a></p>
-	</main>
+	{% block content %}
+		<h2>No Main Block Defined</h2>
+	{% endblock content %}
+	
+	<p><a href="/admin/">Django Admin Views</a></p>
 </body>
 </html>

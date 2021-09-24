@@ -16,7 +16,10 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from django.contrib.admin import site
+from hero.views import HeroListView, HeroDetailView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('<int:pk>', HeroDetailView.as_view()),
+    path('', HeroListView.as_view()),
 ]
