@@ -1,0 +1,26 @@
+{% extends 'superhero_theme.html' %}
+
+{% block title %}
+	Superhero List
+{% endblock title %}
+
+{% block content %}
+
+	<div class="text-center" style="padding-bottom: 30px;"><h1>Hero List</h1></div>
+
+	{% for superhero in object_list %}
+		<div class="row">
+			<div class="text-center">
+				<h4>{{ superhero.identity }} - <a href="{{ superhero.pk }}">{{ superhero.name }}</a></h4>
+			</div>
+		</div>
+	{% endfor %}
+	
+	{% if user.is_authenticated %}
+		<div class="row">
+			<div class="text-center"><a href="/hero/add" class="btn btn-success">Add New Superhero</a></div>
+		</div>
+	{% endif %}
+    
+{% endblock content %}
+
