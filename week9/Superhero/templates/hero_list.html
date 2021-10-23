@@ -1,0 +1,33 @@
+{% extends 'superhero_theme.html' %}
+
+{% block title %}
+	Superhero List
+{% endblock title %}
+
+{% block content %}
+	<p style="padding-top: 30px"></p>
+	<div style="margin-left: 10%"><a href="/article">View Hero Articles</a></div>
+	{% if object_list|length == 0 %}
+		<div class="text-center">
+			<h4>There are no superheros in the database.</h4>
+			{% if user.is_authenticated != True %}
+				Log in to add a superhero.
+			{% endif %}
+	{% endif %}
+	
+	{% for superhero in object_list %}
+		<div class="row">
+			<div class="text-center">
+				<h4>{{ superhero.identity }} - <a href="{{ superhero.pk }}">{{ superhero.name }}</a></h4>
+			</div>
+		</div>
+	{% endfor %}
+	
+	{% if user.is_authenticated %}
+		<div class="row">
+			<div class="text-center"><a href="/hero/add" class="btn btn-success">Add New Superhero</a></div>
+		</div>
+	{% endif %}
+    
+{% endblock content %}
+

@@ -1,0 +1,41 @@
+{% extends 'superhero_theme.html' %}
+
+{% block title %}
+	Superhero Detail
+{% endblock title %}
+
+{% block content %}
+
+	<div class="text-center"><h1>{{ superhero.name }}</h1></div>
+	
+	<div class="text-center"><img src="{{ superhero.image }}" alt="{{ superhero.name }} image is missing" height="300"></div>
+	
+	<div class="row" style="margin-left: 10%; padding-top: 10px;">
+		<h3>Name:</h3>
+		<p>{{ superhero.identity }}</p>
+	</div>
+	<div class="row" style="margin-left: 10%;">
+		<h3>Description:</h3>
+		<p>{{ superhero.description }}</p>
+	</div>
+	<div class="row" style="margin-left: 10%;">
+		<h3>Strength:</h3>
+		<p>{{ superhero.strength }}</p>
+	</div>
+	<div class="row" style="margin-left: 10%;">
+		<h3>Weakness:</h3>
+		<p>{{ superhero.weakness }}</p>
+	</div>
+	<div class="row" style="margin-left: 10%;">
+		<a href="/article">View Hero Articles</a>
+	</div>
+	
+	{% if user.is_authenticated %}
+		<div class="text-center">
+			<a href="/hero/{{ superhero.pk }}/" class="btn btn-success">Edit Superhero</a>
+			<a href="/hero/{{ superhero.pk }}/delete" class="btn btn-danger">Delete Superhero</a>
+		</div>
+	{% endif %}
+
+{% endblock content %}
+
