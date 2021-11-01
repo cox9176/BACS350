@@ -1,0 +1,49 @@
+{% extends 'superhero_theme.html' %}
+
+{% block title %}
+	Superhero Detail
+{% endblock title %}
+
+{% block content %}
+
+	<div class="text-center"><h1>{{ object.name }}</h1></div>
+	{% if profiles|length != 0 %}
+		<div class="text-center"><img src="{{ object.image }}" alt="{{ object.name }} image is missing" height="300"></div>
+	{% else %}
+		<h3 class="text-center">No profile exists. Add a profile</h3>
+	{% endif %}
+	
+	{% for profile in profiles %}
+	<div class="row" style="margin-left: 10%; padding-top: 10px;">
+		<h3>Identity:</h3>
+		<p>{{ profile.identity }}</p>
+	</div>
+	<div class="row" style="margin-left: 10%;">
+		<h3>Description:</h3>
+		<p>{{ profile.description }}</p>
+	</div>
+	<div class="row" style="margin-left: 10%;">
+		<h3>Strength:</h3>
+		<p>{{ profile.strength }}</p>
+	</div>
+	<div class="row" style="margin-left: 10%;">
+		<h3>Weakness:</h3>
+		<p>{{ profile.weakness }}</p>
+	</div>
+	<div class="row" style="margin-left: 10%;">
+		<a href="/article">View Hero Articles</a>
+	</div>
+	{% endfor %}
+	{% if user.is_authenticated %}
+		<div class="text-center">
+			{% if profiles|length == 0 %}
+				<a href="/profile/add" class="btn btn-success">Add Superhero Profile</a>
+			{% else %}
+				<a href="/profile/{{ object.pk }}" class="btn btn-success">Edit Superhero Profile</a>
+			{% endif %}
+			<a href="/hero/{{ object.pk }}/delete" class="btn btn-danger">Delete Superhero</a>
+		</div>
+	{% endif %}
+
+{% endblock content %}
+

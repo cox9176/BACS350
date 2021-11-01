@@ -1,0 +1,8 @@
+{% if user.is_authenticated %}
+	<span class="nav-link">Signed in as {{ user.username }} <a href="{% url 'logout' %}" class="btn btn-success">Log out</a></span>
+{% else %}
+	<span class="nav-link">
+		<a href="{% url 'login' %}" class="btn btn-success">Log in</a>
+		<a href="{% url 'signup' %}" class="btn btn-success">Sign up</a>
+	</span>
+{% endif %}
