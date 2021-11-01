@@ -1,0 +1,35 @@
+{% extends 'superhero_theme.html' %}
+
+{% block title %}
+	Superhero List
+{% endblock title %}
+
+{% block content %}
+
+<div class="container-fluid m-5">
+
+    <h1 class="text-primary text-center">List of Superheros</h1>
+
+    <table class="table table-hover">
+        <tr>
+            <th>Name</th>
+            <th>Edit</th>
+        </tr>
+
+        {% for superhero in object_list %}
+        <tr>
+            <td><a href="/hero/{{ superhero.pk }}">{{ superhero.name }}</a></td>
+            <td><a href="/hero/{{ superhero.pk }}/">Edit</a></td>
+            <td><a href="/hero/{{ superhero.pk }}/delete">Delete</a></td>
+        </tr>
+        {% endfor %}
+
+    </table>
+
+    <p>
+        <a href="/hero/add" class="btn btn-success m-5">Add New Superhero</a>
+    </p>
+
+</div>
+
+{% endblock content %}

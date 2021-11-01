@@ -1,0 +1,38 @@
+{% extends 'superhero_theme.html' %}
+
+{% block title %}
+	Superhero Signup
+{% endblock title %}
+
+{% block content %}
+	<div class="container">
+		<form method="post">{% csrf_token %}
+			<div class="form-group">
+				<label>Username:</label>
+				<input type="text" id="id_username" name="username" class="form-control">
+				{% for field in form %}
+					<p>{{ field.errors }}</p>
+				{% endfor %}
+			</div>
+			<div class="form-group">
+				<label>Password:</label>
+				<input type="password" id="id_password1" name="password1" class="form-control" data-toggle="password">
+				{% for field in form %}
+					<p>{{ field.errors }}</p>
+				{% endfor %}
+			</div>
+			<div class="form-group">
+				<label>Confirm Password:</label>
+				<input type="password" id="id_password2" name="password2" class="form-control" data-toggle="password">
+				{% for field in form %}
+					<p>{{ field.errors }}</p>
+				{% endfor %}
+			</div>
+			<div class="form-group">
+				<input type="submit" class="btn btn-primary" value="Submit"/>
+				<a href="{% url 'home' %}" class="btn btn-info">Cancel</a>
+			</div>
+		</form>
+	</div>
+
+{% endblock content %}
